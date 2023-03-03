@@ -1,17 +1,21 @@
 import '../styles/Box.css'
 import { createDraggable, DragOptions, DragEventData } from '@neodrag/solid';
+import { Accessor } from "solid-js"
+
+export interface BoxProps {
+    idx: number;
+    handleDrag: (e: DragEventData, idx:number) => void;
+}
 
 
-export default function Box()
-    const { draggable } = createDraggable();
-
-    handleDrag := (e: DragEventData) => console.log(e) 
+export default function Box(props: BoxProps)
+    { draggable } := createDraggable();
 
     <div .box use:draggable={{
             axis: 'y',
             bounds: 'parent',
             handle: '.handle',
-            onDrag: handleDrag
+            onDrag: (e: DragEventData) => props.handleDrag(e, props.idx)
         }}>
         Hello
         <img .handle src='/static/hamburger.svg'>

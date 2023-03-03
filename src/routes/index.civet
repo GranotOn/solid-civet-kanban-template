@@ -1,13 +1,24 @@
-{ Title  } from 'solid-start'
-{ For } from 'solid-js' 
+{ Title } from 'solid-start'
+{ For, createSignal } from 'solid-js' 
 Box from "../components/Box.civet"
-Board from "../components/Board.civet"
+Board, {Offset} from "../components/Board.civet"
+import { DragEventData } from '@neodrag/solid';
+
+
+BOXES := 5
 
 export default function Home()
+  [offsets, setOffsets] := createSignal<Offset[]>(Array(BOXES).fill({x: 0, y:0}))
+  
+  handleDrag := (e: DragEventData, i: number) =>
+    newOffsets := offsets().map (offset, idx) =>
+      if idx === i then {x: e.offsetX,  y: e.offsetY} else offset
+    setOffsets(newOffsets)
+      
   <main>
     <Title>SolidStart + Civet Kanban
     <h1>Kanban
-    <Board>
-      <Box>
-      <Box>
-      <Box>
+    <Board offsets=offsets()>
+      <For each=Array(BOXES)>
+        (_, index) =>
+          <Box handleDrag=handleDrag idx=index()>
