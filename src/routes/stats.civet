@@ -1,0 +1,6 @@
+import {} from "solid-start"
+
+
+export default function Stats()
+    <section>
+        <h1>Hello

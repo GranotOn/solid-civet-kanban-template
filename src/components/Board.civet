@@ -1,0 +1,7 @@
+import { children, ParentProps } from "solid-js"
+import "../styles/Board.css"
+
+export default function Board(props: ParentProps)
+    <section .wrapper>
+        <div .board>
+            {props.children}

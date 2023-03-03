@@ -1,0 +1,19 @@
+import '../styles/Box.css'
+import { createDraggable, DragOptions, DragEventData } from '@neodrag/solid';
+
+
+export default function Box()
+    const { draggable } = createDraggable();
+
+    handleDrag := (e: DragEventData) => console.log(e) 
+
+    <div .box use:draggable={{
+            grid: [3,3],
+            axis: 'y',
+            bounds: 'parent',
+            handle: '.handle',
+            onDrag: handleDrag
+        }}>
+        Hello
+        <img .handle src='/static/hamburger.svg'>
+            

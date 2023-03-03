@@ -1,0 +1,13 @@
+{ Title  } from 'solid-start'
+{ For } from 'solid-js' 
+Box from "../components/Box.civet"
+Board from "../components/Board.civet"
+
+export default function Home()
+  <main>
+    <Title>SolidStart + Civet Kanban
+    <h1>Kanban
+    <Board>
+      <Box>
+      <Box>
+      <Box>
